@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Web Liquid Glass：使用 WebGL2 分析式路径追踪实现的可复用网页液态玻璃组件。"
+    >
+    <title>Web Liquid Glass · Simple API Test</title>
+    <link rel="stylesheet" href="../src/liquid-glass.css">
+    <link rel="stylesheet" href="./demo.css">
+  </head>
+  <body>
+    <div class="site-shell" id="sceneRoot">
+      <header class="topbar" data-liquid-glass-ignore>
+        <a class="brand" href="#intro" aria-label="Web Liquid Glass 首页">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Web Liquid Glass</span>
+        </a>
+        <div class="render-status" id="renderStatus" role="status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="renderStatusText">简化接口正在自动挂载</span>
+        </div>
+      </header>
+
+      <main class="page active">
+        <section class="showcase showcase-intro" id="intro" data-section="intro">
+          <img
+            class="showcase-media"
+            src="./assets/river-canyon.jpg"
+            alt="峡湾与蓝色山谷"
+          >
+          <div class="showcase-scrim" aria-hidden="true"></div>
+          <div class="showcase-copy">
+            <p class="eyebrow">WEBGL2 · ANALYTIC PATH TRACING</p>
+            <h1>让网页内容真正<br>穿过一层玻璃。</h1>
+            <p class="lede">
+              不是 CSS 位移图，也不是一层大模糊。组件在 GPU 中追踪光线，
+              从真实页面纹理中重新采样折射后的颜色。
+            </p>
+            <a class="text-link" href="#optics">向下探索折射原理 <span>↓</span></a>
+          </div>
+          <p class="photo-credit">Photo · Alexey Topolyanskiy / Unsplash</p>
+        </section>
+
+        <section class="showcase" id="optics" data-section="optics">
+          <img
+            class="showcase-media"
+            src="./assets/misty-mountain.jpg"
+            alt="雾中的绿色山地"
+            loading="lazy"
+          >
+          <div class="showcase-scrim showcase-scrim-strong" aria-hidden="true"></div>
+          <div class="showcase-copy showcase-copy-right">
+            <p class="eyebrow">TWO-SURFACE REFRACTION</p>
+            <h2>两次折射，<br>只发生在边缘。</h2>
+            <p class="lede">
+              圆角矩形 SDF 生成表面法线，GLSL <code>refract()</code> 分别计算入射和出射。
+              中心保持清晰，边缘才出现反向位移、透镜弯曲与轻微 RGB 色散。
+            </p>
+            <div class="metric-row" aria-label="默认光学参数">
+              <div><strong>2.19×</strong><span>反向位移</span></div>
+              <div><strong>1.71×</strong><span>光学厚度</span></div>
+              <div><strong>4</strong><span>路径 / 像素</span></div>
+            </div>
+          </div>
+          <p class="photo-credit">Photo · Andrew Ridley / Unsplash</p>
+        </section>
+
+        <section class="showcase" id="layers" data-section="layers">
+          <img
+            class="showcase-media"
+            src="./assets/forest-reflection.jpg"
+            alt="森林、岩壁和水面倒影"
+            loading="lazy"
+          >
+          <div class="showcase-scrim" aria-hidden="true"></div>
+          <div class="showcase-copy">
+            <p class="eyebrow">ONE SHAPE · THREE OPTICAL RESPONSES</p>
+            <h2>同一轮廓，<br>没有层间接缝。</h2>
+            <p class="lede">
+              折射、轻毛玻璃和对角高光共享同一个 SDF coverage。
+              模糊采样中心从折射坐标连续滑回原坐标，边缘折射区的模糊权重严格为零。
+            </p>
+            <ol class="layer-list">
+              <li><span>01</span>网页场景纹理</li>
+              <li><span>02</span>边缘折射与色散</li>
+              <li><span>03</span>内部轻雾化与微黑染色</li>
+            </ol>
+          </div>
+          <p class="photo-credit">Photo · Christian Joudrey / Unsplash</p>
+        </section>
+
+        <section class="code-section" id="use" data-section="use">
+          <div class="code-copy">
+            <p class="eyebrow">ZERO RUNTIME DEPENDENCIES</p>
+            <h2>一个组件，接入任何普通网页。</h2>
+            <p>
+              保留真实 DOM 按钮负责语义和点击，WebGL Canvas 只负责光学合成。
+              场景变化、滚动、图片加载与尺寸变化都会自动刷新采样纹理。
+            </p>
+          </div>
+          <pre class="code-card"><code>import { liquidGlass } from "web-liquid-glass";
+import "web-liquid-glass/styles.css";
+
+const glass = liquidGlass("#nav", {
+  sceneRoot: "#app",
+});
+</code></pre>
+          <footer class="site-footer">
+            <span>AGPL-3.0-or-later · WebGL2 only · No CSS glass fallback</span>
+            <a href="../README.md">Read the documentation</a>
+          </footer>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" id="bottomNav" aria-label="示例页面导航">
+        <button class="nav-btn active" type="button" data-page="pageProfile" data-target="intro" aria-pressed="true">
+          <span class="nav-icon" aria-hidden="true">📋</span>
+          <span class="nav-label">介绍</span>
+        </button>
+        <button class="nav-btn" type="button" data-page="pageGallery" data-target="optics" aria-pressed="false">
+          <span class="nav-icon" aria-hidden="true">🖼</span>
+          <span class="nav-label">折射</span>
+        </button>
+        <button class="nav-btn" type="button" data-page="pageNovel" data-target="layers" aria-pressed="false">
+          <span class="nav-icon" aria-hidden="true">📖</span>
+          <span class="nav-label">分层</span>
+        </button>
+        <button class="nav-btn" type="button" data-page="pageAnime" data-target="use" aria-pressed="false" hidden>
+          <span class="nav-icon" aria-hidden="true">📺</span>
+          <span class="nav-label">动漫</span>
+        </button>
+      </nav>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

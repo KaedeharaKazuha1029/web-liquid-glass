@@ -1,0 +1,45 @@
+{
+  "name": "web-liquid-glass",
+  "version": "0.1.0",
+  "description": "A reusable WebGL2 analytic path-traced liquid glass navigation component for the web.",
+  "type": "module",
+  "license": "AGPL-3.0-or-later",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "types": "./types/index.d.ts",
+  "files": [
+    "src",
+    "types",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./styles.css": "./src/liquid-glass.css"
+  },
+  "sideEffects": [
+    "./src/liquid-glass.css"
+  ],
+  "scripts": {
+    "dev": "node ./scripts/serve.mjs",
+    "test": "node --test",
+    "check": "node --check ./src/index.js && node --check ./src/mount.js && node --check ./src/layout.js && node --check ./src/scene-capture.js && node --check ./src/shaders.js && node --check ./src/liquid-glass-navigation.js && node --check ./demo/elaina-liquid-glass-nav.js && node --check ./demo/main.js && node --check ./demo-simple/main.js",
+    "prepublishOnly": "npm run check && npm test"
+  },
+  "keywords": [
+    "liquid-glass",
+    "webgl2",
+    "glsl",
+    "refraction",
+    "path-tracing",
+    "navigation",
+    "glassmorphism"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

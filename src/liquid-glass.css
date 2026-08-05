@@ -1,0 +1,64 @@
+.liquid-glass-nav {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.liquid-glass-canvas {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 140%;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  pointer-events: none;
+  contain: strict;
+}
+
+.liquid-glass-nav > :not(.liquid-glass-canvas) {
+  position: relative;
+  z-index: 6;
+}
+
+.liquid-glass-nav button {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: pan-y;
+}
+
+.liquid-glass-nav button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.liquid-glass-nav [data-liquid-glass-tone="light"] {
+  --liquid-glass-label-color: rgba(255, 255, 255, 0.96);
+  --liquid-glass-label-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+  color: var(--liquid-glass-label-color);
+  text-shadow: var(--liquid-glass-label-shadow);
+}
+
+.liquid-glass-nav [data-liquid-glass-tone="dark"] {
+  --liquid-glass-label-color: rgba(15, 17, 23, 0.94);
+  --liquid-glass-label-shadow: 0 1px 2px rgba(255, 255, 255, 0.28);
+  color: var(--liquid-glass-label-color);
+  text-shadow: var(--liquid-glass-label-shadow);
+}
+
+.liquid-glass-nav.liquid-glass--unsupported .liquid-glass-canvas {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-glass-nav,
+  .liquid-glass-nav * {
+    transition-duration: 0.01ms !important;
+  }
+}
