@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Platforms>x64</Platforms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RootNamespace>LiquidGlass.Probe</RootNamespace>
+    <AssemblyName>liquidglass-probe</AssemblyName>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <Description>系统界面侦查工具：枚举 Shell 组件，实测 Accent 透明化是否被本机版本接受。</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LiquidGlass.Core\LiquidGlass.Core.csproj" />
+    <ProjectReference Include="..\LiquidGlass.Win32\LiquidGlass.Win32.csproj" />
+  </ItemGroup>
+
+</Project>

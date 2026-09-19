@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Platforms>x64</Platforms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <RootNamespace>LiquidGlass.Win32</RootNamespace>
+    <Description>Win32 互操作层：系统组件定位、Accent 策略、分层覆盖窗口。</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LiquidGlass.Core\LiquidGlass.Core.csproj" />
+  </ItemGroup>
+
+</Project>
