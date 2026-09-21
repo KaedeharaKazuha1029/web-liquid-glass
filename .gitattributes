@@ -1,0 +1,4 @@
+# Keep the standalone native Windows port out of GitHub's language statistics.
+# The web package remains the primary source tree; the port is reviewed and
+# built independently under windows-port/.
+windows-port/**/*.cs linguist-vendored
