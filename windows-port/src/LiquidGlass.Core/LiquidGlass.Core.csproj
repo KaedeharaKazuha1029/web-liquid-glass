@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>LiquidGlass.Core</RootNamespace>
+    <Description>液态玻璃光学核心：SDF、双重折射、RGB 色散、菲涅耳反射、高斯雾化、时间累积。零第三方依赖。</Description>
+  </PropertyGroup>
+
+</Project>

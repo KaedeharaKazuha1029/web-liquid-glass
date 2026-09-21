@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/LiquidGlass.App/LiquidGlass.App.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="src/LiquidGlass.Core/LiquidGlass.Core.csproj" />
+    <Project Path="src/LiquidGlass.Preview/LiquidGlass.Preview.csproj" />
+    <Project Path="src/LiquidGlass.Probe/LiquidGlass.Probe.csproj" />
+    <Project Path="src/LiquidGlass.Tests/LiquidGlass.Tests.csproj" />
+    <Project Path="src/LiquidGlass.Win32/LiquidGlass.Win32.csproj" />
+  </Folder>
+</Solution>

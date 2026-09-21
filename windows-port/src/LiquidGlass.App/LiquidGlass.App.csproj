@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Platforms>x64</Platforms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <RootNamespace>LiquidGlass.App</RootNamespace>
+    <AssemblyName>liquidglass</AssemblyName>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <Description>为 Windows 任务栏 / 开始菜单等系统界面套上液态玻璃。</Description>
+    <!--
+      WFO0003：WinForms 希望高 DPI 由 Application.SetHighDpiMode 管理。
+      本程序坚持用 app.manifest 声明，原因是清单在 CLR 启动之前就生效，
+      而我们要在托管代码的第一行就去调用 GetWindowRect / DwmGetWindowAttribute。
+      若改用运行时代码，在"清单一满、代码未跑"的空隙里坐标已经是错的。
+      两处都做了配置，这里显式忽略该告警。
+    -->
+    <NoWarn>$(NoWarn);WFO0003</NoWarn>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LiquidGlass.Core\LiquidGlass.Core.csproj" />
+    <ProjectReference Include="..\LiquidGlass.Win32\LiquidGlass.Win32.csproj" />
+  </ItemGroup>
+
+</Project>

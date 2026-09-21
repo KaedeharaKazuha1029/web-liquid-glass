@@ -1,0 +1,22 @@
+<Project>
+
+  <PropertyGroup>
+    <TargetFramework Condition="'$(TargetFramework)' == ''">net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <!-- 项目完全自包含，不引用任何第三方 NuGet 包。
+         注：本机构建环境禁止写入 %USERPROFILE%\.nuget，故把包目录指到工作区内；
+         普通 Windows 上可去掉这一行（详见 docs/TROUBLESHOOTING.md §九）。
+
+         用 GetFullPath 先把 ".." 规范化掉，保证交给 NuGet 的是
+         不含回溯成分的绝对路径（NuGet 对含 ".." 的包路径处理不稳健）。 -->
+    <RestorePackagesPath>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\.nuget\packages'))\</RestorePackagesPath>
+
+  </PropertyGroup>
+
+</Project>

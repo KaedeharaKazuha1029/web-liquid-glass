@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>LiquidGlass.Tests</RootNamespace>
+    <AssemblyName>liquidglass-tests</AssemblyName>
+    <Description>零依赖回归测试：验证光学移植的数值保真度与优化的精确性。</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LiquidGlass.Core\LiquidGlass.Core.csproj" />
+  </ItemGroup>
+
+</Project>
